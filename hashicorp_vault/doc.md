@@ -14,7 +14,7 @@ Note: when you set up Vault, you will get vault root token. Above picture is usi
     stage("test"){
            steps{
                 script{
-                wrap([$class: 'VaultBuildWrapper', configuration: [vaultCredentialId: '7da7ecac-7dbe-4e0e-8ba2-733e4b8096a2', vaultUrl: 'http://10.207.32.51:8200'], vaultSecrets: [[path: 'secret/testing', secretValues: [[envVar: 'value1', vaultKey: 'value_one']]]]]) {    
+                wrap([$class: 'VaultBuildWrapper', configuration: [vaultCredentialId: 'vaultCredentialId', vaultUrl: 'vaultUrl'], vaultSecrets: [[path: 'secret/testing', secretValues: [[envVar: 'value1', vaultKey: 'value_one']]]]]) {    
                 sh 'echo $value1'
                 sh 'if [ ${value1} == \'value_one1_value\' ]; then echo \'yes\'; else echo \'no\'; fi '  
                 }
